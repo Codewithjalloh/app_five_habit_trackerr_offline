@@ -50,4 +50,17 @@ class HabitDatabase extends ChangeNotifier {
 
     readHabits();
   }
+
+// READ - send saved habits from db
+  Future<void> readHabits() async {
+    // fetch all habits from db
+    List<Habit> fetchHabits = await isar.habits.where().findAll();
+
+    // give to current habit
+    currentHabits.clear();
+    currentHabits.addAll(fetchHabits);
+
+    // update UI
+    notifyListeners();
+  }
 }
