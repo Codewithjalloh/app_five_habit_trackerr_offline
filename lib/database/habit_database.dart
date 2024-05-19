@@ -26,4 +26,19 @@ class HabitDatabase extends ChangeNotifier {
       await isar.writeTxn(() => isar.appSettings.put(settings));
     }
   }
+
+// get first data of app start (for heatmap)
+  Future<DateTime?> getFirstLaunch() async {
+    final settings = await isar.appSettings.where().findFirst();
+    return settings?.firstLaunchData;
+  }
+
+/*
+   CRUD OPERATIONS
+   */
+
+// List of habits
+  final List<Habit> currentHabits = [];
+
+// CREATE - add a  new habit
 }
