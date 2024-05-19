@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await HabitDatabase
+
   runApp(const MyApp());
 }
 
