@@ -20,8 +20,13 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  // text controller
+  final TextEditingController textController = TextEditingController();
+
+  void createNewHabit() {}
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold();
   }
 }
