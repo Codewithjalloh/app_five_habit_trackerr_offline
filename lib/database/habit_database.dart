@@ -100,6 +100,23 @@ class HabitDatabase extends ChangeNotifier {
     readHabits();
   }
 
+  // UPDATE - edit habit name
+  Future<void> updateHabitName(int id, String newName) async {
+    // find the specific habit
+    final habit = await isar.habits.get(id);
+
+    // update habit name
+    if (habit != null) {
+      // update name
+      await isar.writeTxn(() async {
+        habit.name = newName;
+        await isar.habits.put(habit);
+      });
+    }
+    // re-read from db
+    readHabits();
+  }
+
   // DELETE - Delete habit
   Future<void> deleteHabit(int id) async {
     await isar.writeTxn(() async {
